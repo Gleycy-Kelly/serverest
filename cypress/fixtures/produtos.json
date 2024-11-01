@@ -1,0 +1,17 @@
+{
+    "produtoCompleto":{
+        "nome": "Ameixa Teste 01",
+        "preco": "10",
+        "descricao": "Ameixa roxa de teste 01",
+        "quantidade": "10",
+        "imagem": "produto.jpg"
+    },
+    "produtoVazio":{
+        "nome": "",
+        "preco": "",
+        "descricao": "",
+        "quantidade": "",
+        "imagem": ""
+    }
+   
+}

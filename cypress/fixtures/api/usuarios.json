@@ -1,0 +1,14 @@
+{
+    "usuarioValido": {
+        "nome": "Jana Raiane de Menezes",
+        "email": "jarm@teste.com",
+        "password": "teste",
+        "administrador": "true"
+    },
+    "usuarioInvalido": {
+        "nome": "Juliane Raiane de Menezes",
+        "email": "jarm@teste.com",
+        "password": "teste",
+        "administrador": "true"
+    }
+}

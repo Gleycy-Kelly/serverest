@@ -6,15 +6,16 @@ describe('Manutenção de Produtos', () => {
     const produtoFactory = new ProdutoFactory()
 
     beforeEach(() =>{
-        cy.fixture('login').then((login) =>{
+        cy.fixture('e2e/login').then((login) =>{
             loginFactory.realizarLogin(login)
         })
     })
 
     it('Cadastro de Produto Válido', () => {
-        cy.fixture('produtos').then((produto) =>{
+        const urlListagemDeProdutos = 'https://front.serverest.dev/admin/listarprodutos'
+        cy.fixture('e2e/produtos').then((produto) =>{
             produtoFactory.cadastrarProduto(produto.produtoCompleto)
-            cy.url().should('contains', 'https://front.serverest.dev/admin/listarprodutos')
+            cy.url().should('contains', urlListagemDeProdutos)
             cy.get('table.table.table-striped').should('be.visible')
             cy.get('tbody tr').should('contain.text', produto.produtoCompleto.nome);
         })  
@@ -24,7 +25,7 @@ describe('Manutenção de Produtos', () => {
         const quantidadeDeAlertas = 4
         const mensagensDeAlerta = ['Nome é obrigatório', 'Preco é obrigatório', 'Descricao é obrigatório', 'Quantidade é obrigatório']
         
-        cy.fixture('produtos').then((produto) =>{
+        cy.fixture('e2e/produtos').then((produto) =>{
             produtoFactory.cadastrarProduto(produto.produtoVazio)
             cy.get('div.alert.alert-secondary.alert-dismissible').should('have.length', quantidadeDeAlertas)
         })
@@ -35,7 +36,7 @@ describe('Manutenção de Produtos', () => {
     })
 
     it('Exclusão de produto', () =>{
-        cy.fixture('produtos').then((produto) =>{
+        cy.fixture('e2e/produtos').then((produto) =>{
             produtoFactory.excluirProduto(produto.produtoCompleto.nome)
             cy.get('tbody tr').should('not.contain.text', produto.produtoCompleto.nome);
         })  
